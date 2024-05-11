@@ -1,0 +1,51 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: marketplace-credit-card-service
+
+management:
+  endpoints:
+    enabled-by-default: true
+    jmx:
+      exposure:
+        include: "*"
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    distribution:
+      slo:
+        http:
+          server:
+            requests: 500ms,1s,2s,5s,10s,15s,30s # not working in cloud?
+      percentiles:
+        http:
+          server:
+            requests: 0.95 # not working in cloud?
+      percentiles-histogram:
+        http:
+          server:
+            requests: true # not working in cloud?
+    export:
+      prometheus:
+        enabled: true
+    web:
+      server:
+        request:
+          autotime:
+            enabled: true
+
+# Configuration Tracing Jeager
+opentracing:
+  jaeger:
+    service-name: ${spring.application.name}
+    sampler:
+      type: "const"
+      param: 1
+    udp-sender:
+      host: "localhost"
+      port: "6831"
