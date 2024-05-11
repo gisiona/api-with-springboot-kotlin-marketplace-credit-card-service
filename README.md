@@ -2,7 +2,7 @@
 
 # Arquitetura do projeto
 <h1 align="center">
-    <img alt="EColeta - Seu marketplace de credit cards." src="https://github.com/gisiona/api-with-springboot-kotlin-marketplace-credit-card-service/blob/main/desenho_arquitetura/desenho_de_arquitetura.png" />
+    <img alt="EColeta - Seu marketplace de credit cards." src="https://github.com/gisiona/api-with-springboot-kotlin-marketplace-credit-card-service/blob/main/marketplace-credit-card-service/desenho_arquitetura/desenho_de_arquitetura.png" />
 </h1>
 
 # Endpoints disponíveis nessa apirest:
