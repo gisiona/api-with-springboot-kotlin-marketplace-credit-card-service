@@ -5,6 +5,11 @@
     <img alt="EColeta - Seu marketplace de credit cards." src="" />
 </h1>
 
+# Endpoints disponíveis nessa apirest:
+
+### POST: - Create Analysis Credit Card
+Endpoint: http://localhost:8080/credits-card/v1/analysis
+
 Payload de Entrada API:
 ```json
 {

@@ -17,7 +17,7 @@ import java.util.UUID
 
 @Slf4j
 @RestController
-@RequestMapping("/credits-card-analysis/v1")
+@RequestMapping("/credits-card/v1/analysis")
 class AnalysisCreditCardController (meter : MeterRegistry){
 
     @PostMapping
