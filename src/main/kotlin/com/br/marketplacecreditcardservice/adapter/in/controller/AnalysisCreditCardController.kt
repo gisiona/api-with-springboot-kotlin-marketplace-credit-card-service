@@ -1,10 +1,8 @@
 package com.br.marketplacecreditcardservice.adapter.`in`.controller
 
 import com.br.marketplacecreditcardservice.adapter.`in`.controller.request.AnalysisCreditCardRequest
-import com.br.marketplacecreditcardservice.adapter.`in`.controller.response.AnalysisCreditCardResponse
-import com.br.marketplacecreditcardservice.adapter.`in`.controller.response.ClientCreditCard
-import com.br.marketplacecreditcardservice.adapter.`in`.controller.response.CreditCard
-import com.br.marketplacecreditcardservice.adapter.`in`.controller.response.FlagCard
+import com.br.marketplacecreditcardservice.adapter.`in`.controller.request.ClientCreditCard
+import com.br.marketplacecreditcardservice.adapter.`in`.controller.response.*
 import io.micrometer.core.instrument.MeterRegistry
 import io.micrometer.core.instrument.Metrics
 import lombok.extern.slf4j.Slf4j
@@ -26,11 +24,13 @@ class AnalysisCreditCardController (meter : MeterRegistry){
     fun analysisCredit(
         @RequestBody analysisCredit: AnalysisCreditCardRequest
     ): ResponseEntity<*>? {
-        Metrics.counter("name_request_aproved", "tag_name", "A")
+        Metrics.counter("request_count", "tag_name", "A")
 
        val response = AnalysisCreditCardResponse(
            codigo = UUID.randomUUID().toString(),
-           clientCreditCardResponse = ClientCreditCard(
+           clientCreditCardResponse = ClientCreditCard (
+               documentType = analysisCredit.clientCreditCardRequest.documentType,
+               document = analysisCredit.clientCreditCardRequest.document,
                nomeCompleto = analysisCredit.clientCreditCardRequest.nomeCompleto,
                email = analysisCredit.clientCreditCardRequest.email,
                telefoneCelular = analysisCredit.clientCreditCardRequest.telefoneCelular
@@ -45,7 +45,8 @@ class AnalysisCreditCardController (meter : MeterRegistry){
                    code = UUID.randomUUID().toString(),
                    flagCard = FlagCard.MASTERCARD
                )
-           )
+           ),
+           statusAnalysisCredit = StatusAnalysisCredit.EM_ANALISE
        )
 
         return ResponseEntity.ok().body(response)

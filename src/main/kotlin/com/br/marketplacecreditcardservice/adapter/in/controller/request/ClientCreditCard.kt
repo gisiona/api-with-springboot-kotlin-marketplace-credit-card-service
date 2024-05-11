@@ -6,6 +6,12 @@ import lombok.Data
 
 @Builder @Data
 data class ClientCreditCard(
+    @JsonProperty("document")
+    val document: String,
+
+    @JsonProperty("document_type")
+    val documentType: DocumentType,
+
     @JsonProperty("full_name")
     val nomeCompleto: String,
 
