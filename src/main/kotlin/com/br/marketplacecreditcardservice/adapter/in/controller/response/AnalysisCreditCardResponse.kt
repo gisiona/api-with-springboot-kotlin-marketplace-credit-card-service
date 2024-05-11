@@ -4,6 +4,7 @@ import com.br.marketplacecreditcardservice.adapter.`in`.controller.request.Clien
 import com.fasterxml.jackson.annotation.JsonProperty
 import lombok.Builder
 import lombok.Data
+import java.time.LocalDateTime
 
 @Builder @Data
 data class AnalysisCreditCardResponse(
@@ -20,5 +21,8 @@ data class AnalysisCreditCardResponse(
     var creditCard: MutableList<CreditCard> = ArrayList(),
 
     @JsonProperty("status_analysis_credit")
-    var statusAnalysisCredit: StatusAnalysisCredit = StatusAnalysisCredit.EM_ANALISE
+    var statusAnalysisCredit: StatusAnalysisCredit = StatusAnalysisCredit.EM_ANALYSIS,
+
+    @JsonProperty("response_date")
+    val dataProcessamento: LocalDateTime = LocalDateTime.now()
 )

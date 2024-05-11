@@ -6,11 +6,13 @@ import com.br.marketplacecreditcardservice.adapter.`in`.controller.response.*
 import io.micrometer.core.instrument.MeterRegistry
 import io.micrometer.core.instrument.Metrics
 import lombok.extern.slf4j.Slf4j
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 import java.util.Arrays
 import java.util.UUID
@@ -20,11 +22,14 @@ import java.util.UUID
 @RequestMapping("/credits-card/v1/analysis")
 class AnalysisCreditCardController (meter : MeterRegistry){
 
-    @PostMapping
+
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping()
     fun analysisCredit(
         @RequestBody analysisCredit: AnalysisCreditCardRequest
     ): ResponseEntity<*>? {
-        Metrics.counter("request_count", "tag_name", "A")
+        Metrics.counter("request_count", "document_type", analysisCredit.clientCreditCardRequest.documentType.toString())
 
        val response = AnalysisCreditCardResponse(
            codigo = UUID.randomUUID().toString(),
@@ -46,10 +51,10 @@ class AnalysisCreditCardController (meter : MeterRegistry){
                    flagCard = FlagCard.MASTERCARD
                )
            ),
-           statusAnalysisCredit = StatusAnalysisCredit.EM_ANALISE
+           statusAnalysisCredit = StatusAnalysisCredit.EM_ANALYSIS
        )
 
-        return ResponseEntity.ok().body(response)
+        return ResponseEntity<AnalysisCreditCardResponse>(response, HttpStatus.CREATED)
     }
 
 

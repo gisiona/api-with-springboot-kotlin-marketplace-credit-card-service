@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @Slf4j
 @RestController
-@RequestMapping("/formalization-credit-card/v1")
+@RequestMapping("/credits-card/v1/formalization")
 class FormalizationCreditCardController (meter : MeterRegistry){
 
     @PostMapping
