@@ -56,3 +56,38 @@ Payload de Saída API:
   "response_date": "2024-05-11T16:10:52.3698193"
 }
 ```
+
+### POST: - Formalization Contract Analysis Credit Card
+Endpoint: http://localhost:8080/credits-card/v1/formalization-contract
+* StatusCode Response: 200
+
+
+Payload de Entrada API:
+```json
+{
+  "document":"12345678901",
+  "address_correspondence": {
+    "zip_code":"12345678901",
+    "patio_type":"RUA",
+    "patio":"12345678901",
+    "neighborhood":"12345678901",
+    "city":"12345678901",
+    "uf":"12345678901",
+    "number":"12345678901",
+    "complement":"12345678901"
+  },
+  "code_analysis_credit": "69b1a990-6660-43ed-b8be-8161b35a9bfd",
+  "card_card":"e774668a-fdd6-43c9-bc7c-c6f9a4ed9c63"
+}
+```
+
+Payload de Saída API:
+```json
+{
+  "code_analysis_credit": "69b1a990-6660-43ed-b8be-8161b35a9bfd",
+  "code_formalization_credit_card": "99732681-37e7-4a0f-b931-2e9e6add8419",
+  "code_card": "e774668a-fdd6-43c9-bc7c-c6f9a4ed9c63",
+  "formalization_date": "2024-06-09T13:37:26.7854125",
+  "status_formalized_credit_card": "FORMALIZED"
+}
+```
