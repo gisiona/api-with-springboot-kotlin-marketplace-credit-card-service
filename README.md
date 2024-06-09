@@ -2,7 +2,7 @@
 
 # Arquitetura do projeto
 <h1 align="center">
-    <img alt="EColeta - Seu marketplace de credit cards." src="https://github.com/gisiona/api-with-springboot-kotlin-marketplace-credit-card-service/blob/main/marketplace-credit-card-service/desenho_arquitetura/desenho_de_arquitetura.png" />
+    <img alt="Desenho da arquitetura do sistema marketplace credit card." src="https://github.com/gisiona/api-with-springboot-kotlin-marketplace-credit-card-service/blob/main/marketplace-credit-card-service/desenho_arquitetura/desenho_de_arquitetura.png" />
 </h1>
 
 # Endpoints disponíveis nessa apirest:
@@ -42,14 +42,17 @@ Payload de Saída API:
   "cards": [
     {
       "code_card": "47226824-b80d-4998-92cc-e1db6f11a3b5",
-      "flag_card": "VISA"
+      "flag_card": "VISA",
+      "value_approved": 5000.00,
+      "status_analysis_credit": "APPROVED"
     },
     {
       "code_card": "440c3b89-8dc8-4d67-97b1-e56a27b202e6",
-      "flag_card": "MASTERCARD"
+      "flag_card": "MASTERCARD",
+      "value_approved": 5000.00,
+      "status_analysis_credit": "EM_ANALYSIS"
     }
   ],
-  "status_analysis_credit": "EM_ANALYSIS",
   "response_date": "2024-05-11T16:10:52.3698193"
 }
 ```

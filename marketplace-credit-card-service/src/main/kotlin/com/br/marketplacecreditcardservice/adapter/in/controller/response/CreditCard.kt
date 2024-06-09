@@ -5,9 +5,16 @@ import lombok.Builder
 import lombok.Data
 
 @Builder @Data
-data class CreditCard (
+data class CreditCard(
     @JsonProperty("code_card")
     val code: String,
+
     @JsonProperty("flag_card")
-    val flagCard: FlagCard
+    val flagCard: FlagCard,
+
+    @JsonProperty("value_approved")
+    val valueAproved: Double,
+
+    @JsonProperty("status_analysis_credit")
+    val statusAnalysisCredit: StatusAnalysisCredit = StatusAnalysisCredit.EM_ANALYSIS
 )

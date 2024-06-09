@@ -20,9 +20,6 @@ data class AnalysisCreditCardResponse(
     @JsonProperty("cards")
     var creditCard: MutableList<CreditCard> = ArrayList(),
 
-    @JsonProperty("status_analysis_credit")
-    var statusAnalysisCredit: StatusAnalysisCredit = StatusAnalysisCredit.EM_ANALYSIS,
-
     @JsonProperty("response_date")
     val dataProcessamento: LocalDateTime = LocalDateTime.now()
 )

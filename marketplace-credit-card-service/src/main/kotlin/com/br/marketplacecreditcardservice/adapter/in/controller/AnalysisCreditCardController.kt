@@ -44,14 +44,17 @@ class AnalysisCreditCardController (meter : MeterRegistry){
            creditCard = Arrays.asList(
                CreditCard(
                    code = UUID.randomUUID().toString(),
-                   flagCard = FlagCard.VISA
+                   flagCard = FlagCard.VISA,
+                   statusAnalysisCredit = StatusAnalysisCredit.EM_ANALYSIS,
+                   valueAproved = 5000.00
                ),
                CreditCard(
                    code = UUID.randomUUID().toString(),
-                   flagCard = FlagCard.MASTERCARD
+                   flagCard = FlagCard.MASTERCARD,
+                   statusAnalysisCredit = StatusAnalysisCredit.APPROVED,
+                   valueAproved = 3000.00
                )
-           ),
-           statusAnalysisCredit = StatusAnalysisCredit.EM_ANALYSIS
+           )
        )
 
         return ResponseEntity<AnalysisCreditCardResponse>(response, HttpStatus.CREATED)
