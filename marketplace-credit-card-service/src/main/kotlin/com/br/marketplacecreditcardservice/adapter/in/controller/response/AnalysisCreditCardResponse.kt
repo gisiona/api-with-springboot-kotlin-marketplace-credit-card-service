@@ -9,17 +9,17 @@ import java.time.LocalDateTime
 @Builder @Data
 data class AnalysisCreditCardResponse(
     @JsonProperty("code_analysis_credit")
-    val codigo: String,
+    val code: String,
 
     @JsonProperty("client")
     val clientCreditCardResponse: ClientCreditCard,
 
     @JsonProperty("monthly_income_value")
-    val rendaMensal: Double,
+    val monthlyIncome: Double,
 
     @JsonProperty("cards")
     var creditCard: MutableList<CreditCard> = ArrayList(),
 
-    @JsonProperty("response_date")
-    val dataProcessamento: LocalDateTime = LocalDateTime.now()
+    @JsonProperty("analysis_date")
+    val analysisAt: LocalDateTime = LocalDateTime.now()
 )

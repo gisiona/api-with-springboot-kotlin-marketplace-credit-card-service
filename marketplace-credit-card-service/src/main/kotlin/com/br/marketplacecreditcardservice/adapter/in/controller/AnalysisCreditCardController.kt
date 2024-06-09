@@ -8,7 +8,6 @@ import io.micrometer.core.instrument.Metrics
 import lombok.extern.slf4j.Slf4j
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -32,7 +31,7 @@ class AnalysisCreditCardController (meter : MeterRegistry){
         Metrics.counter("request_count", "document_type", analysisCredit.clientCreditCardRequest.documentType.toString())
 
        val response = AnalysisCreditCardResponse(
-           codigo = UUID.randomUUID().toString(),
+           code = UUID.randomUUID().toString(),
            clientCreditCardResponse = ClientCreditCard (
                documentType = analysisCredit.clientCreditCardRequest.documentType,
                document = analysisCredit.clientCreditCardRequest.document,
@@ -40,7 +39,7 @@ class AnalysisCreditCardController (meter : MeterRegistry){
                email = analysisCredit.clientCreditCardRequest.email,
                telefoneCelular = analysisCredit.clientCreditCardRequest.telefoneCelular
            ),
-           rendaMensal = analysisCredit.rendaMensal,
+           monthlyIncome = analysisCredit.rendaMensal,
            creditCard = Arrays.asList(
                CreditCard(
                    code = UUID.randomUUID().toString(),
@@ -58,11 +57,5 @@ class AnalysisCreditCardController (meter : MeterRegistry){
        )
 
         return ResponseEntity<AnalysisCreditCardResponse>(response, HttpStatus.CREATED)
-    }
-
-
-    @GetMapping("/health")
-    fun health(): ResponseEntity<*>? {
-        return ResponseEntity.ok("200 OK")
     }
 }
